@@ -1,0 +1,9 @@
+[[Accounts.Accounts]]
+Username = "Username"
+Password = "Password"
+Default = false
+
+[ProxyScraper]
+File = "proxies.txt"
+Max = 20
+Timeout = 5

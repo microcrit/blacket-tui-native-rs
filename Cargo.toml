@@ -1,0 +1,13 @@
+[package]
+name = "blacket-tui-native-rs"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+cursive = { version = "0.20", default-features = false, features = [ "crossterm-backend", "toml" ] }
+reqwest = { version = "0.12.5", features = ["blocking", "json"] }
+serde = { version = "1.0.204", features = ["derive"] }
+serde_json = "1.0.120"
+toml = "0.8.15"
