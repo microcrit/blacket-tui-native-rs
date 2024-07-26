@@ -6,12 +6,12 @@ borders = "none"
     shadow     = ["#000000", "black"]
     view       = "#363636"
 
-    primary   = ["#111111"]
+    primary   = ["#b8b8b8"]
     secondary = "#EEEEEE"
     tertiary  = "#444444"
 
-    title_primary   = "#ff5555"
-    title_secondary = "#ffff55"
+    title_primary   = "#ffffff"
+    title_secondary = "#a1a1a1"
 
-    highlight          = "#a1a1a1"
-    highlight_inactive = "#4a4a4a"
+    highlight          = "#7d7d7d"
+    highlight_inactive = "#7d7d7d"

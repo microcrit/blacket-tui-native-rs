@@ -12,5 +12,10 @@ pub struct GenericResponse {
 pub struct UserResponse {
     pub error: bool,
     pub reason: Option<String>,
-    pub user: Option<objects::User>
+    pub user: Option<objects::user::User>
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct DataResponse {
+
 }

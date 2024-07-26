@@ -17,6 +17,7 @@ pub enum LoginResponseError {
     Generic(GenericError),
 }
 
+#[derive(Debug, Clone)]
 pub struct User {
     pub username: Option<String>,
     pub password: Option<String>,
@@ -98,12 +99,15 @@ impl User {
     pub fn logout(&self) -> Result<(), String> {
         let logout_endpoint = get_endpoint(Endpoints::UserLogout);
         let client = Client::new();
-        let response = client.post(logout_endpoint)
+        let response = client.get(logout_endpoint)
             .header("Cookie", format!("token={}", self.token.as_ref().unwrap()))
             .send()
             .unwrap();
-        if response.status().as_u16() != 302 {
-            return Err("Failed to logout".to_string());
+        let code = response.status().as_u16();
+        if code == 200 || code == 302 {
+            return Ok(());
+        } else {
+            return Err(format!("An error occurred while logging out. Code: {}", code));
         }
         Ok(())
     }

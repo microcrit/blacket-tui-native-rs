@@ -80,6 +80,35 @@ fn main() {
                 let dialog = views::Dialog::new()
                     .title("Select an option")
                     .content(views::LinearLayout::vertical()
+                        .child(views::SelectView::new()
+                            .item_str("Pack Opener")
+                            .item_str("Logout")
+                            .with_name("select_action")
+                        )
+                        .child(views::Button::new("Select", move |s| {
+                            let action_selector = s.call_on_name("select_action", |v: &mut views::SelectView| v.selection()).unwrap().unwrap().to_string();
+                            match action_selector.as_str() {
+                                "Pack Opener" => {
+                                    providers::pack_opener::handler(s);
+                                }
+                                "Logout" => {
+                                    s.pop_layer();
+                                    let user = user.clone();
+                                    let dialog = views::Dialog::new()
+                                        .title("Logout")
+                                        .content(views::TextView::new("Are you sure you want to logout?"))
+                                        .button("Yes", move |s| {
+                                            user.logout().unwrap();
+                                            s.quit();
+                                        })
+                                        .button("No", |s| {
+                                            s.pop_layer();
+                                        });
+                                    s.add_layer(dialog);
+                                }
+                                _ => {}
+                            }
+                        }))
                     )
                     .button("Quit", |s| {
                         s.quit()

@@ -10,4 +10,7 @@ cursive = { version = "0.20", default-features = false, features = [ "crossterm-
 reqwest = { version = "0.12.5", features = ["blocking", "json"] }
 serde = { version = "1.0.204", features = ["derive"] }
 serde_json = "1.0.120"
+tokio = "1.39.1"
+tokio-tls = "0.3.1"
 toml = "0.8.15"
+websocket = "0.27.1"
